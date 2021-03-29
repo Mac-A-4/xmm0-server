@@ -11,11 +11,11 @@ public class RoomEvent extends Event {
 	}
 
 	public static RoomEvent join(Client client) {
-		return new RoomEvent(client, "Join");
+		return new RoomEvent(client, "join");
 	}
 
 	public static RoomEvent leave(Client client) {
-		return new RoomEvent(client, "Leave");
+		return new RoomEvent(client, "leave");
 	}
 
 	public Client getClient() {
@@ -29,7 +29,7 @@ public class RoomEvent extends Event {
 	public class Package extends EventPackage {
 	
 		public Package(RoomEvent event) {
-			super("RoomEvent.Package");
+			super("room");
 			this.addInfo("client", event.getClient().getName());
 			this.addInfo("action", event.getAction());
 			this.addInfo("time", event.getStartTime().toString());

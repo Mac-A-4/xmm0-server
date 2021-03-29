@@ -22,9 +22,9 @@ public class Message extends Event {
 	public class Package extends EventPackage {
 	
 		public Package(Message message) {
-			super("Message.Package");
+			super("message");
 			this.addInfo("client", message.getSender().getName());
-			this.addInfo("value", message.getText());
+			this.addInfo("content", message.getText());
 			this.addInfo("time", message.getStartTime().toString());
 		}
 
