@@ -20,7 +20,7 @@ public class Room extends Timeable {
 	private synchronized void clean() {
 		var list = this.clientTable.shouldClean();
 		for (var x : list) {
-			this.leave(x);
+			this.remove(id);
 		}
 	}
 
@@ -36,14 +36,18 @@ public class Room extends Timeable {
 		return client;
 	}
 
-	public synchronized void leave(ClientID id) {
-		this.clean();
+	private synchronized void remove(ClientID id) {
 		if (!this.clientTable.contains(id)) {
 			throw new NoSuchElementException("Client does not exist.");
 		}
 		var client = this.clientTable.get(id);
 		this.clientTable.remove(id);
 		this.eventQueue.add(RoomEvent.leave(client));
+	}
+
+	public synchronized void leave(ClientID id) {
+		this.clean();
+		this.remove(id);
 	}
 
 	public synchronized void send(ClientID id, String cipherText) {
