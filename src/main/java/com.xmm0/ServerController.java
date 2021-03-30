@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 import java.util.NoSuchElementException;
@@ -26,6 +27,7 @@ public class ServerController {
 
 	}
 
+	@CrossOrigin
 	@PostMapping("/create")
 	public @ResponseBody CreateResponse create() {
 		return new CreateResponse(Server.get().create());
@@ -60,6 +62,7 @@ public class ServerController {
 		return true;
 	}
 
+	@CrossOrigin
 	@PostMapping("/room/{room}/join")
 	public @ResponseBody JoinResponse join(@PathVariable String room, @RequestBody JoinRequest request) {
 		if (!this.isValidName(request.name)) {
@@ -82,6 +85,7 @@ public class ServerController {
 
 	}
 
+	@CrossOrigin
 	@PostMapping("/room/{room}/leave")
 	public void leave(@PathVariable String room, @RequestBody LeaveRequest request) {
 		try {
@@ -103,6 +107,7 @@ public class ServerController {
 
 	}
 
+	@CrossOrigin
 	@PostMapping("/room/{room}/send")
 	public void send(@PathVariable String room, @RequestBody SendRequest request) {
 		try {
@@ -123,6 +128,7 @@ public class ServerController {
 
 	}
 
+	@CrossOrigin
 	@PostMapping("/room/{room}/read")
 	public @ResponseBody List<EventPackage> read(@PathVariable String room, @RequestBody ReadRequest request) {
 		try {
