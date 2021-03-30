@@ -20,7 +20,7 @@ public class Room extends Timeable {
 	private synchronized void clean() {
 		var list = this.clientTable.shouldClean();
 		for (var x : list) {
-			this.remove(id);
+			this.remove(x);
 		}
 	}
 
