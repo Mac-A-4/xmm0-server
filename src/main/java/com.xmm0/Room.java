@@ -70,6 +70,7 @@ public class Room extends Timeable {
 		for (var x : this.eventQueue) {
 			if (x.shouldSend(client) && x.shouldRead(client)) {
 				res.add(x.getPackage());
+				x.send(client);
 			}
 		}
 		client.sendHeartbeat();

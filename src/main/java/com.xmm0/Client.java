@@ -2,7 +2,7 @@ package com.xmm0;
 
 public class Client extends Timeable {
 	
-	private static final double LIFETIME = 32.0;
+	private static final double LIFETIME = 1200.0;
 
 	private ClientID id;
 	private String name;
